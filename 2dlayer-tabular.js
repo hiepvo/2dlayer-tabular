@@ -25,6 +25,7 @@
     var close                              = document.querySelector('#' + el.parentNode.id + ' span.close');
     setTimeout(function(){
       removeClass(el, 'active');
+      addClass(el.parentNode, 'visited');
     }, 750);
 
     hide(close, 500);
@@ -41,6 +42,7 @@
       setTimeout(function(){
         removeClass(el, 'active');
         removeClass(hidden_layer, 'visible');
+        addClass(el.parentNode, 'visited');
         el.parentNode.style.top  = hidden_layer.offsetTop + 'px';
         el.parentNode.style.left = hidden_layer.offsetLeft + 'px';
         hidden_layer.style.top   = el.parentNode.offsetTop + 'px';
@@ -77,7 +79,7 @@
     var content    = document.querySelector('#' + currentEl.id + ' div');
     var close      = document.querySelector('#' + currentEl.id + ' .close');
     removeClass(close, 'hide');
-
+    removeClass(content.parentNode, 'visited');
     if(lastActive.className.indexOf('active') !== -1){
       closeSlide(lastActive);
       setTimeout(function(){
