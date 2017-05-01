@@ -9,8 +9,7 @@
   var links        = document.querySelectorAll('.layer header');
   var close_links  = document.querySelectorAll('.layer .close');
   var hidden_layer = document.querySelector('#hidden_layer');
-  var hidden_layerTop = hidden_layer.offsetTop;
-  var hidden_layerLeft = hidden_layer.offsetLeft;
+
   for(var i = 0; i < close_links.length; i++){
     links[i].addEventListener('click', openSlide, false);
     close_links[i].addEventListener('click', closeBtn, false);
@@ -19,9 +18,9 @@
   // restore height of element and remove class 'active'
   function closeSlide(el){
     el.style.maxHeight                     = 50 + 'px';
-    el.style.transitionDuration            = '1.2s';
+    el.style.transitionDuration            = '1.5s';
     el.parentNode.style.width              = 25 + 'rem';
-    el.parentNode.style.transitionDuration = '.5s';
+    el.parentNode.style.transitionDuration = '0.5s';
     var close                              = document.querySelector('#' + el.parentNode.id + ' span.close');
     setTimeout(function(){
       removeClass(el, 'active');
