@@ -9,6 +9,8 @@
   var links        = document.querySelectorAll('.layer header');
   var close_links  = document.querySelectorAll('.layer .close');
   var hidden_layer = document.querySelector('#hidden_layer');
+  var hidden_layerTop = hidden_layer.offsetTop;
+  var hidden_layerLeft = hidden_layer.offsetLeft;
   for(var i = 0; i < close_links.length; i++){
     links[i].addEventListener('click', openSlide, false);
     close_links[i].addEventListener('click', closeBtn, false);
@@ -39,11 +41,11 @@
       setTimeout(function(){
         removeClass(el, 'active');
         removeClass(hidden_layer, 'visible');
-        el.parentNode.style.top    = hidden_layer.offsetTop + 'px';
-        el.parentNode.style.left   = hidden_layer.offsetLeft + 'px';
-        hidden_layer.style.top     = el.parentNode.offsetTop + 'px';
-        hidden_layer.style.left    = el.parentNode.offsetLeft + 'px';
-        temp                       = null;
+        el.parentNode.style.top  = hidden_layer.offsetTop + 'px';
+        el.parentNode.style.left = hidden_layer.offsetLeft + 'px';
+        hidden_layer.style.top   = el.parentNode.offsetTop + 'px';
+        hidden_layer.style.left  = el.parentNode.offsetLeft + 'px';
+        temp                     = null;
       }, 750);
       var close = document.querySelector('#' + el.parentNode.id + ' span.close');
       hide(close, 500);
@@ -52,14 +54,16 @@
 
   var temp       = null;
   var inProgress = false;
+
   function openSlide(e){
     if(inProgress === true || inProgress === undefined){
       return;
     }
-    inProgress    = true;
-    var currentEl = this.parentNode.parentNode;
-    var parent    = this.parentNode.parentNode.parentNode;
-    var lastChild = parent.lastElementChild;
+    inProgress           = true;
+    var currentEl        = this.parentNode.parentNode;
+    var parent           = this.parentNode.parentNode.parentNode;
+    var lastChild        = parent.lastElementChild;
+
     if(temp === null){
       temp = lastChild;
     }
@@ -77,51 +81,46 @@
     if(lastActive.className.indexOf('active') !== -1){
       closeSlide(lastActive);
       setTimeout(function(){
-        removeClass(hidden_layer, 'visible');
-        lastChild.style.top    = hidden_layer.offsetTop + 'px';
-        lastChild.style.left   = hidden_layer.offsetLeft + 'px';
-        hidden_layer.style.top     = lastChild.offsetTop + 'px';
-        hidden_layer.style.left    = lastChild.offsetLeft + 'px';
-      }, 750);
+        lastChild.style.top     = hidden_layer.offsetTop + 'px';
+        lastChild.style.left    = hidden_layer.offsetLeft + 'px';
+        hidden_layer.style.top  = lastChild.offsetTop + 'px';
+        hidden_layer.style.left = lastChild.offsetLeft + 'px';
 
-      setTimeout(function(){
-        currentEl.style.top  = hidden_layer.offsetTop + 'px';
-        currentEl.style.left = hidden_layer.offsetLeft + 'px';
+        currentEl.style.top     = lastChild.offsetTop + 'px';
+        currentEl.style.left    = lastChild.offsetLeft + 'px';
         hidden_layer.style.top  = currentEl.offsetTop + 'px';
         hidden_layer.style.left = currentEl.offsetLeft + 'px';
-      }, 1400);
+
+      }, 750);
 
       if(lastChild.offsetTop !== currentEl.offsetTop){
         addClass(content, 'active');
         setTimeout(function(){
+          addClass(hidden_layer, 'visible');
           var aDiv                      = document.getElementsByClassName('active')[0];
           aDiv.style.transitionDuration = '2.5s';
-          content.style.maxHeight    = maxHeight + 'px';
-          inProgress                 = false;
-          currentEl.style.width      = '100%';
-          addClass(hidden_layer, 'visible');
-        }, 1900);
+          content.style.maxHeight       = maxHeight + 'px';
+          inProgress                    = false;
+          currentEl.style.width         = '100%';
+        }, 1500);
       }
     }
     else{
-      var tempLeft = lastChild.offsetLeft;
-
       lastChild.style.top  = currentEl.offsetTop + 'px';
       lastChild.style.left = currentEl.offsetLeft + 'px';
 
       currentEl.style.top  = lastChild.offsetTop + 'px';
-      currentEl.style.left = tempLeft + 'px';
+      currentEl.style.left = lastChild.offsetLeft + 'px';
       addClass(lastChild, 'top-layer');
       addClass(content, 'active');
       addClass(hidden_layer, 'visited');
       var aDiv                      = document.getElementsByClassName('active')[0];
       aDiv.style.transitionDuration = '2.5s';
-
+      addClass(hidden_layer, 'visible');
       setTimeout(function(){
-        content.style.maxHeight    = maxHeight + 'px';
-        currentEl.style.width      = '100%';
-        inProgress                 = false;
-        addClass(hidden_layer, 'visible');
+        content.style.maxHeight = maxHeight + 'px';
+        currentEl.style.width   = '100%';
+        inProgress              = false;
       }, 700);
     }
     setTimeout(function(){

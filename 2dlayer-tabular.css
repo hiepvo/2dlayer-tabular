@@ -178,7 +178,7 @@ html {
 
 .visible {
   opacity: 1 !important;
-  transition:         opacity .5s ease-out .2s;
-  -moz-transition:    opacity .5s ease-out .2s;
-  -webkit-transition: opacity .5s ease-out .2s;
+  transition:         opacity .5s ease-out;
+  -moz-transition:    opacity .5s ease-out;
+  -webkit-transition: opacity .5s ease-out;
 }
