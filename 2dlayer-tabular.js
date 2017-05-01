@@ -22,6 +22,11 @@
     el.parentNode.style.width              = 25 + 'rem';
     el.parentNode.style.transitionDuration = '0.5s';
     var close                              = document.querySelector('#' + el.parentNode.id + ' span.close');
+    var description =  document.querySelector('#' + el.parentNode.id + ' div.description');
+    var article =  document.querySelector('#' + el.parentNode.id + ' div.description~article');
+    description.style.opacity = 0;
+    article.style.opacity = 0;
+
     setTimeout(function(){
       removeClass(el, 'active');
       addClass(el.parentNode, 'visited');
@@ -33,6 +38,11 @@
   function closeBtn(el){
     if(this.tagName.toLowerCase() === 'span'){
       var el                                 = this.parentNode;
+      var description =  document.querySelector('#' + el.parentNode.id + ' div.description');
+      var article =  document.querySelector('#' + el.parentNode.id + ' div.description~article');
+      description.style.opacity = 0;
+      article.style.opacity = 0;
+
       el.style.maxHeight                     = 50 + 'px';
       el.style.transitionDuration            = '1.5s';
       el.parentNode.style.width              = 25 + 'rem';
@@ -77,10 +87,15 @@
     var lastActive = document.querySelector('#' + lastChild.id + ' div');
     var content    = document.querySelector('#' + currentEl.id + ' div');
     var close      = document.querySelector('#' + currentEl.id + ' .close');
+
+    var description =  document.querySelector('#' + currentEl.id + ' div.description');
+    var article =  document.querySelector('#' + currentEl.id + ' div.description~article');
+
     removeClass(close, 'hide');
     removeClass(content.parentNode, 'visited');
     if(lastActive.className.indexOf('active') !== -1){
       closeSlide(lastActive);
+
       setTimeout(function(){
         lastChild.style.top     = hidden_layer.offsetTop + 'px';
         lastChild.style.left    = hidden_layer.offsetLeft + 'px';
@@ -96,6 +111,7 @@
 
       if(lastChild.offsetTop !== currentEl.offsetTop){
         addClass(content, 'active');
+
         setTimeout(function(){
           addClass(hidden_layer, 'visible');
           var aDiv                      = document.getElementsByClassName('active')[0];
@@ -106,6 +122,12 @@
           currentEl.style.width         = '100%';
           currentEl.style.transitionDuration = '0.75s';
           inProgress                    = false;
+
+          article.style.opacity = 1;
+          description.style.opacity = 1;
+          article.style.transitionDelay = '.35s';
+          description.style.transitionDelay = '.35s';
+
         }, 1500);
       }
     }
@@ -118,14 +140,20 @@
       addClass(lastChild, 'top-layer');
       addClass(content, 'active');
       addClass(hidden_layer, 'visited');
+
       var aDiv                      = document.getElementsByClassName('active')[0];
       aDiv.style.transitionDuration = '2.5s';
+
       addClass(hidden_layer, 'visible');
       setTimeout(function(){
         content.style.maxHeight = maxHeight + 'px';
         content.style.transitionDuration = '.75s';
         currentEl.style.width   = '100%';
         currentEl.style.transitionDuration   = '.75s';
+        article.style.opacity = 1;
+        description.style.opacity = 1;
+        article.style.transitionDelay = '.35s';
+        description.style.transitionDelay = '.35s';
         inProgress              = false;
       }, 700);
     }
