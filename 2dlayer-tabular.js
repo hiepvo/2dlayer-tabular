@@ -125,8 +125,8 @@
 
           article.style.opacity = 1;
           description.style.opacity = 1;
-          article.style.transitionDelay = '.35s';
-          description.style.transitionDelay = '.35s';
+          article.style.transitionDelay = '.2s';
+          description.style.transitionDelay = '.2s';
 
         }, 1500);
       }
@@ -152,8 +152,8 @@
         currentEl.style.transitionDuration   = '.75s';
         article.style.opacity = 1;
         description.style.opacity = 1;
-        article.style.transitionDelay = '.35s';
-        description.style.transitionDelay = '.35s';
+        article.style.transitionDelay = '.2s';
+        description.style.transitionDelay = '.2s';
         inProgress              = false;
       }, 700);
     }
