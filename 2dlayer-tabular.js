@@ -77,16 +77,22 @@
     if(lastActive.className.indexOf('active') !== -1){
       closeSlide(lastActive);
       setTimeout(function(){
-        currentEl.style.top  = lastChild.offsetTop + 'px';
-        currentEl.style.left = lastChild.offsetLeft + 'px';
-        lastChild.style.top  = currentEl.offsetTop + 'px';
-        lastChild.style.left = currentEl.offsetLeft + 'px';
-        addClass(lastChild, 'top-layer');
-      }, 950);
+        removeClass(hidden_layer, 'visible');
+        lastChild.style.top    = hidden_layer.offsetTop + 'px';
+        lastChild.style.left   = hidden_layer.offsetLeft + 'px';
+        hidden_layer.style.top     = lastChild.offsetTop + 'px';
+        hidden_layer.style.left    = lastChild.offsetLeft + 'px';
+      }, 750);
+
+      setTimeout(function(){
+        currentEl.style.top  = hidden_layer.offsetTop + 'px';
+        currentEl.style.left = hidden_layer.offsetLeft + 'px';
+        hidden_layer.style.top  = currentEl.offsetTop + 'px';
+        hidden_layer.style.left = currentEl.offsetLeft + 'px';
+      }, 1400);
 
       if(lastChild.offsetTop !== currentEl.offsetTop){
         addClass(content, 'active');
-
         setTimeout(function(){
           var aDiv                      = document.getElementsByClassName('active')[0];
           aDiv.style.transitionDuration = '2.5s';
@@ -94,7 +100,7 @@
           inProgress                 = false;
           currentEl.style.width      = '100%';
           addClass(hidden_layer, 'visible');
-        }, 1500);
+        }, 1900);
       }
     }
     else{
@@ -116,7 +122,7 @@
         currentEl.style.width      = '100%';
         inProgress                 = false;
         addClass(hidden_layer, 'visible');
-      }, 750);
+      }, 700);
     }
     setTimeout(function(){
       removeClass(currentEl, 'on-top');
