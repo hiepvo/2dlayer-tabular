@@ -101,8 +101,11 @@
           var aDiv                      = document.getElementsByClassName('active')[0];
           aDiv.style.transitionDuration = '2.5s';
           content.style.maxHeight       = maxHeight + 'px';
-          inProgress                    = false;
+          content.style.transitionDuration = '0.75s';
+
           currentEl.style.width         = '100%';
+          currentEl.style.transitionDuration = '0.75s';
+          inProgress                    = false;
         }, 1500);
       }
     }
@@ -120,7 +123,9 @@
       addClass(hidden_layer, 'visible');
       setTimeout(function(){
         content.style.maxHeight = maxHeight + 'px';
+        content.style.transitionDuration = '.75s';
         currentEl.style.width   = '100%';
+        currentEl.style.transitionDuration   = '.75s';
         inProgress              = false;
       }, 700);
     }
