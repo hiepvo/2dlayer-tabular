@@ -5,7 +5,7 @@
 (function(){
   'use strict';
   var init         = {};
-  var maxHeight    = 720;
+  var maxHeight    = 250;
   var links        = document.querySelectorAll('.layer header');
   var close_links  = document.querySelectorAll('.layer .close');
   var hidden_layer = document.querySelector('#hidden_layer');
@@ -17,7 +17,7 @@
 
   // restore height of element and remove class 'active'
   function closeSlide(el){
-    el.style.maxHeight                     = 50 + 'px';
+    el.style.height                     = 50 + 'px';
     el.style.transitionDuration            = '1.5s';
     el.parentNode.style.width              = 25 + 'rem';
     el.parentNode.style.transitionDuration = '0.5s';
@@ -43,7 +43,7 @@
       description.style.opacity = 0;
       article.style.opacity = 0;
 
-      el.style.maxHeight                     = 50 + 'px';
+      el.style.height                     = 50 + 'px';
       el.style.transitionDuration            = '1.5s';
       el.parentNode.style.width              = 25 + 'rem';
       el.parentNode.style.transitionDuration = '.5s';
@@ -116,7 +116,7 @@
           addClass(hidden_layer, 'visible');
           var aDiv                      = document.getElementsByClassName('active')[0];
           aDiv.style.transitionDuration = '2.5s';
-          content.style.maxHeight       = maxHeight + 'px';
+          content.style.height       = maxHeight + 'px';
           content.style.transitionDuration = '0.75s';
 
           currentEl.style.width         = '100%';
@@ -146,7 +146,7 @@
 
       addClass(hidden_layer, 'visible');
       setTimeout(function(){
-        content.style.maxHeight = maxHeight + 'px';
+        content.style.height = maxHeight + 'px';
         content.style.transitionDuration = '.75s';
         currentEl.style.width   = '100%';
         currentEl.style.transitionDuration   = '.75s';

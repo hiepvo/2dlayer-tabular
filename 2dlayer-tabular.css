@@ -37,10 +37,10 @@ html {
 
 .active {
   background-color: white;
-  -webkit-transition: max-height cubic-bezier(0.190, 1.000, 0.220, 1.000), width cubic-bezier(0.190, 1.000, 0.220, 1.000);
-  -moz-transition: max-height cubic-bezier(0.190, 1.000, 0.220, 1.000), width cubic-bezier(0.190, 1.000, 0.220, 1.000);
-  -o-transition: max-height cubic-bezier(0.190, 1.000, 0.220, 1.000), width cubic-bezier(0.190, 1.000, 0.220, 1.000);
-  transition: max-height cubic-bezier(0.190, 1.000, 0.220, 1.000), width cubic-bezier(0.190, 1.000, 0.220, 1.000); /* easeOutExpo */
+  -webkit-transition: height cubic-bezier(0.190, 1.000, 0.220, 1.000), width cubic-bezier(0.190, 1.000, 0.220, 1.000);
+  -moz-transition: height cubic-bezier(0.190, 1.000, 0.220, 1.000), width cubic-bezier(0.190, 1.000, 0.220, 1.000);
+  -o-transition: height cubic-bezier(0.190, 1.000, 0.220, 1.000), width cubic-bezier(0.190, 1.000, 0.220, 1.000);
+  transition: height cubic-bezier(0.190, 1.000, 0.220, 1.000), width cubic-bezier(0.190, 1.000, 0.220, 1.000); /* easeOutExpo */
 }
 
 .visited {
@@ -97,7 +97,7 @@ html {
 }
 
 .layer-content {
-  max-height: 50px;
+  height: 50px;
   line-height: 50px;
   overflow: hidden;
 }
